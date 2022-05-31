@@ -13,6 +13,6 @@ const getDb = require('../services/db');
     } catch (err) {
       res.sendStatus(500).json(err);
     }
-    
+
     db.close();
 }
