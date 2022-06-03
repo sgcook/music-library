@@ -72,15 +72,20 @@ exports.destroy = async(req, res) => {
   const db = await getDb();
   const { artistId } = req.params;
 
-  const [[artist]] = await db.query('DELETE FROM Artist WHERE id = ?', [
-    artistId
-  ]);
+  try {
+    console.log(db);
+    const [ { affectedRows }, ] = await db.query('DELETE FROM Artist WHERE id = ?', [
+      artistId]);
 
-  if (!artist) {
+    if (!affectedRows) {
+      res.sendStatus(404);
+    } else {
+      res.status(200).send();
+    }
+  } catch(err) {
     res.sendStatus(404);
-  } else {
-    res.status(200).json(artist);
   }
+  
 
   db.close();
 }
