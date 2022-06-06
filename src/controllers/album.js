@@ -11,7 +11,7 @@ exports.create = async (req, res) => {
       name,
       year,
     ]);
-    res.status(201);
+    res.sendSgtatus(201);
   } catch (err) {
     res.sendStatus(500).json(err);
   }
