@@ -11,5 +11,9 @@ router.patch('/:artistId', artistController.update);
 router.delete('/:artistId', artistController.destroy);
 
 router.post('/:artistId/album', albumController.create);
+router.get('/:artistId/album', albumController.read);
+router.get('/:artistId/album/:albumId', albumController.readById);
+router.patch('/:artistId/album/:albumId', albumController.update);
+router.delete('/:artistId/album/:albumId', albumController.destroy);
 
 module.exports = router;

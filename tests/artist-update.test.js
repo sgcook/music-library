@@ -6,6 +6,7 @@ const app = require('../src/app');
 describe('update artist', () => {
   let db;
   let artists;
+  
   beforeEach(async () => {
     db = await getDb();
     await Promise.all([
