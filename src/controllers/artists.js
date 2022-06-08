@@ -6,7 +6,7 @@ const getDb = require('../services/db');
 
    try {
      await db.query(`
-     INSERT INTO Artist (name, genre)
+     INSERT INTO Artists (name, genre)
      VALUES (?, ?)`, [
        name,
        genre,
@@ -23,7 +23,7 @@ exports.read = async (_, res) => {
   const db = await getDb();
 
   try {
-    const [artists] = await db.query('SELECT * FROM Artist');
+    const [artists] = await db.query('SELECT * FROM Artists');
     res.status(200).json(artists);
   } catch (err) {
     res.status(500).json(err);
@@ -36,7 +36,7 @@ exports.readById = async (req, res) => {
   const db = await getDb();
   const { artistId } = req.params;
 
-  const [[artist]] = await db.query('SELECT * FROM Artist WHERE id = ? ', [
+  const [[artist]] = await db.query('SELECT * FROM Artists WHERE id = ? ', [
     artistId,
   ]);
 
@@ -55,7 +55,7 @@ exports.update = async(req, res) => {
   const data = req.body;
 
   try {
-    const [ { affectedRows }, ] = await db.query('UPDATE Artist SET ? WHERE id = ?', [
+    const [ { affectedRows }, ] = await db.query('UPDATE Artists SET ? WHERE id = ?', [
       data, artistId]);
 
     if (!affectedRows) {
@@ -75,7 +75,7 @@ exports.destroy = async(req, res) => {
   const { artistId } = req.params;
 
   try {
-    const [ { affectedRows }, ] = await db.query('DELETE FROM Artist WHERE id = ?', [artistId]);
+    const [ { affectedRows }, ] = await db.query('DELETE FROM Artists WHERE id = ?', [artistId]);
 
     if (!affectedRows) {
       res.sendStatus(404);

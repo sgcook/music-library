@@ -35,19 +35,19 @@ const setUpDatabase = async () => {
     await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
 
     await db.query(`USE ${DB_NAME}`);
-    await db.query(`CREATE TABLE IF NOT EXISTS Artist (
+    await db.query(`CREATE TABLE IF NOT EXISTS Artists (
       id INT PRIMARY KEY auto_increment,
       name VARCHAR(25),
       genre VARCHAR(25)
     )`);
 
-    await db.query(`CREATE TABLE IF NOT EXISTS Album (
+    await db.query(`CREATE TABLE IF NOT EXISTS Albums (
       id INT PRIMARY KEY auto_increment,
       name VARCHAR(25),
       year int,
       artistId INT,
       FOREIGN KEY (artistId)
-        REFERENCES Artist(id)
+        REFERENCES Artists(id)
         ON DELETE CASCADE
       )`);
       

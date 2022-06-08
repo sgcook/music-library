@@ -7,7 +7,7 @@ exports.create = async (req, res) => {
 
   try {
     await db.query(`
-    INSERT INTO Album (name, year) 
+    INSERT INTO Albums (name, year) 
     VALUES (?, ?)`, [
       name,
       year,
@@ -24,7 +24,7 @@ exports.read = async (_, res) => {
   const db = await getDb();
 
   try {
-    const [albums] = await db.query('SELECT * FROM Album');
+    const [albums] = await db.query('SELECT * FROM Albums');
     res.status(200).json(albums);
   } catch (err) {
     res.status(500).json(err);
@@ -37,7 +37,7 @@ exports.readById = async (req, res) => {
   const db = await getDb();
   const { albumId } = req.params;
 
-  const [[album]] = await db.query('SELECT * FROM Album WHERE id = ?', [
+  const [[album]] = await db.query('SELECT * FROM Albums WHERE id = ?', [
     albumId,
   ]);
 
@@ -56,7 +56,7 @@ exports.update = async (req, res) => {
   const data = req.body;
 
   try {
-    const [ { affectedRows }, ] = await db.query('UPDATE Album SET ? WHERE id = ?', [
+    const [ { affectedRows }, ] = await db.query('UPDATE Albums SET ? WHERE id = ?', [
       data, albumId]);
 
     if(!affectedRows) {
@@ -76,7 +76,7 @@ exports.destroy = async(req, res) => {
   const { albumId } = req.params;
 
   try {
-    const [ { affectedRows }, ] = await db.query('DELETE FROM Album WHERE id = ?', [albumId]);
+    const [ { affectedRows }, ] = await db.query('DELETE FROM Albums WHERE id = ?', [albumId]);
 
     if(!affectedRows) {
       res.sendStatus(404);

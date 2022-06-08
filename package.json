@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/sgcook/music-library#readme",
   "devDependencies": {
+    "@faker-js/faker": "^7.2.0",
     "chai": "^4.3.6",
     "dotenv": "^16.0.1",
     "eslint": "^8.16.0",
