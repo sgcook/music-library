@@ -29,6 +29,7 @@ describe('create albums', () => {
           const [[albumsEntries]] = await db.query(
             `SELECT * FROM Albums WHERE name = 'The White Album'`
           );
+          
           expect(albumsEntries.name).to.equal(albumData.name);
           expect(albumsEntries.year).to.equal(albumData.year);
         }

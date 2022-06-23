@@ -1,7 +1,7 @@
 {
   "name": "music-library",
   "version": "1.0.0",
-  "description": "Learning how to design and implement an API which can perform CRUD operations on a databse",
+  "description": "Learning how to design and implement an API which can perform CRUD operations on a database",
   "main": "index.js",
   "scripts": {
     "pretest": "node utils/create-database.js test",

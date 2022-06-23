@@ -15,19 +15,3 @@ const connection = mysql.createConnection({
 });
 
 connection.query(`DROP DATABASE ${DB_NAME}`, () => connection.end());
-
-// const connectToDatabase = async () => {
-//   try {
-//     const db = await mysql.createConnection({
-//       host: DB_HOST,
-//       user: DB_USER,
-//       password: DB_PASSWORD,
-//       port: DB_PORT,
-//     });
-//     await db.query(`DROP DATABASE ${DB_NAME}`, () => db.end());
-//   } catch (err) {
-//     console.log(`Your environment variables might be wrong. Please double check .env file`);
-//   }
-// }
-
-// connectToDatabase();
